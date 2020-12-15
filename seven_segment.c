@@ -79,7 +79,7 @@ static ssize_t digit_to_display_show(struct class *cls, struct class_attribute *
 static ssize_t digit_to_display_store(struct class *cls, struct class_attribute *attr,
         const char *buf, size_t count)
 {
-    if (buf[0] - (int)'0' < 10 && buf[0]-(int)'48' >= 0) {
+    if (buf[0] - (int)'0' < 10 && buf[0]-(int)'0' >= 0) {
         seven_segment_devp->digit_to_display = buf[0] - (int)'0';
         display_on_screen(buf);
     }

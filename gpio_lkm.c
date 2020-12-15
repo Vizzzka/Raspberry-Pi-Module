@@ -512,7 +512,7 @@ static const int map_digit[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D,
                                    0x39, 0x5E, 0x79, 0x71};
 
 void display_on_screen(const char cNumber[]) {
-s
+
     int i;
     int digit = map_digit[cNumber[0]-(int)'0'];
     for (i = 0; i < SEGMENT_NUM; ++i)

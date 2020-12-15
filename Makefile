@@ -2,7 +2,7 @@ CROSS := 1
 
 PWD = $(shell pwd)
 TARGET1 = gpio_lkm
-TARGET2 = seven_seg
+TARGET2 = seven_segment
 
 ifneq ($(CROSS), 1)
 	CURRENT = $(shell uname -r)
