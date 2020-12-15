@@ -505,25 +505,25 @@ static void __exit gpio_lkm_exit(void)
     printk(KERN_INFO "[GPIO_LKM] - Raspberry Pi GPIO driver removed\n");
 }
 
-static const int segment_pins[] = { 2, 3, 4, 17, 27, 22, 10};
-static const int masks[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40};
-static const int digit_bitmap[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D,
+static const int pin_to_segment[] = { 2, 3, 4, 17, 27, 22, 10};
+static const int maping[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40};
+static const int map_digit[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D,
                                    0x7D, 0x07, 0x7F, 0x67, 0x77, 0x7C,
                                    0x39, 0x5E, 0x79, 0x71};
 
 void display_on_screen(const char cNumber[]) {
-
+s
     int i;
-    int digit = digit_bitmap[cNumber[0]-(int)'0'];
+    int digit = map_digit[cNumber[0]-(int)'0'];
     for (i = 0; i < SEGMENT_NUM; ++i)
     {
-        gpio_set_value(segment_pins[i], 0);
+        gpio_set_value(pin_to_segment[i], 0);
     }
     for (i = 0; i < 7; ++i)
     {
-        if ((masks[i] & digit) == masks[i]) {
+        if ((maping[i] & digit) == maping[i]) {
             printk(KERN_INFO "[SEVEN_SEG] pulling HIGH pin no.%d\n", i);
-            gpio_set_value(segment_pins[i], 1);
+            gpio_set_value(pin_to_segment[i], 1);
         }
     }
 }
